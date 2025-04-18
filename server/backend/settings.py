@@ -115,6 +115,8 @@ else:
     CSRF_COOKIE_SECURE = False
     SESSION_COOKIE_SAMESITE = 'Lax'
     CSRF_COOKIE_SAMESITE = 'Lax'
+    SESSION_COOKIE_DOMAIN = '.mokshaix.in'
+    CSRF_COOKIE_DOMAIN = '.mokshaix.in'
 
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS').split(',')
 

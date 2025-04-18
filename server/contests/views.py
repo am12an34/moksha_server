@@ -1,17 +1,22 @@
 from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
+from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from common.decorators import login_required, body
 from common.responses import NoContentResponse
 from common.exceptions import BadRequest, Conflict
-from contests.helpers import get_contest, get_team_reg
+from contests.helpers import get_contest, get_team_reg, get_contest_registration_email_message, get_team_contest_registration_email_message
 from users.serializers import AuthUserSerializer
 from teams.helpers import get_team
 from teams.serializers import TeamSerializer
 from .models import SoloContestRegistration as SoloContestRegistrationModel, TeamContestRegistration as TeamContestRegistrationModel, TeamContestUserRegistration
 from .serializers import SoloContestRegistrationSerializer, TeamContestRegistrationSerializer, TeamContestUserRegistrationSerializer
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 @method_decorator(login_required, name="dispatch")
@@ -49,6 +54,23 @@ class SoloContestRegistration(APIView):
             contest=contest
         )
         solo_reg.save()
+
+        # Send email notification for successful registration
+        try:
+            send_mail(
+                subject=f'Moksha IX - Registration Confirmation for {contest.contest_slug}',
+                message=get_contest_registration_email_message(
+                    request.user.first_name,
+                    contest.contest_slug,
+                    contest.club_slug
+                ),
+                from_email=env('EMAIL_HOST_USER'),
+                recipient_list=[request.user.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Log the error but don't fail the registration process
+            print(f"Error sending email: {str(e)}")
 
         serializer = SoloContestRegistrationSerializer(solo_reg)
         return Response(data=serializer.data, status=201)
@@ -122,6 +144,29 @@ class TeamContestRegistration(APIView):
 
         if team_reg is None:
             return Response({'data': None, 'message': 'No registration found.'})
+
+        # Send email notifications to all team members
+        try:
+            # Get all user objects for the selected members
+            member_users = User.objects.filter(id__in=selected_members).all()
+
+            # Send emails to all team members
+            for user in member_users:
+                send_mail(
+                    subject=f'Moksha IX - Team Registration Confirmation for {contest.contest_slug}',
+                    message=get_team_contest_registration_email_message(
+                        user.first_name,
+                        team.team_name,
+                        contest.contest_slug,
+                        contest.club_slug
+                    ),
+                    from_email=env('EMAIL_HOST_USER'),
+                    recipient_list=[user.email],
+                    fail_silently=False,
+                )
+        except Exception as e:
+            # Log the error but don't fail the registration process
+            print(f"Error sending email: {str(e)}")
 
         serializer = TeamContestRegistrationSerializer(
             team_reg,

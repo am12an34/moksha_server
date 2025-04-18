@@ -1,8 +1,8 @@
-
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.db import transaction, IntegrityError
 from django.utils.decorators import method_decorator
+from django.core.mail import send_mail
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
@@ -11,7 +11,11 @@ from common.exceptions import Conflict, BadRequest, InternalServerError
 from teams.helpers import get_team
 from teams.models import Team, TeamMember
 from .models import Invite
-from .helpers import verify_invite, verify_team_leader
+from .helpers import verify_invite, verify_team_leader, get_team_invitation_email_message
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 @method_decorator(login_required, name="dispatch")
@@ -47,6 +51,25 @@ class BaseEndpoint(APIView):
 
                 new_invite = Invite(team=team, user=user)
                 new_invite.save()
+
+                # Send email notification to the invited user
+                try:
+                    send_mail(
+                        subject=f'Moksha IX - Team Invitation for {team.team_name}',
+                        message=get_team_invitation_email_message(
+                            user.first_name,
+                            team.team_name,
+                            request.user.first_name,
+                            request.user.last_name
+                        ),
+                        from_email=env('EMAIL_HOST_USER'),
+                        recipient_list=[user.email],
+                        fail_silently=False,
+                    )
+                except Exception as e:
+                    # Log the error but don't fail the invitation process
+                    print(f"Error sending invitation email: {str(e)}")
+
         except IntegrityError:
             raise InternalServerError(
                 message='Some error occurred. Could not invite.')
