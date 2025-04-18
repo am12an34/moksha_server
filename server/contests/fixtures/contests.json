@@ -1,0 +1,227 @@
+[
+  {
+    "model": "contests.contest",
+    "pk": 1,
+    "fields": {
+      "club_slug": "nlc",
+      "contest_slug": "quiz-competition",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 2,
+    "fields": {
+      "club_slug": "fine-arts",
+      "contest_slug": "kalakriti",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 3,
+    "fields": {
+      "club_slug": "fine-arts",
+      "contest_slug": "comiquest",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 4,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "moksha-maestro",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 5,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "melody-mania",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 6,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "harmony-hunt",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 7,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "beatnik",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 8,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "folklore-fiesta",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 9,
+    "fields": {
+      "club_slug": "malhar",
+      "contest_slug": "muzic-madness",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 10,
+    "fields": {
+      "club_slug": "dzire",
+      "contest_slug": "shinigami-showdown",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 11,
+    "fields": {
+      "club_slug": "dzire",
+      "contest_slug": "dragon-ballroom",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 12,
+    "fields": {
+      "club_slug": "dzire",
+      "contest_slug": "hunter-x-hunter-showdown",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 14,
+    "fields": {
+      "club_slug": "collabs",
+      "contest_slug": "kbc",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 15,
+    "fields": {
+      "club_slug": "collabs",
+      "contest_slug": "cosmania",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 16,
+    "fields": {
+      "club_slug": "nlc",
+      "contest_slug": "oxford-union-debate",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 17,
+    "fields": {
+      "club_slug": "nlc",
+      "contest_slug": "open-mic",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 18,
+    "fields": {
+      "club_slug": "nlc",
+      "contest_slug": "plot-twist",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 19,
+    "fields": {
+      "club_slug": "nlc",
+      "contest_slug": "treasure-hunt",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 20,
+    "fields": {
+      "club_slug": "aaveg",
+      "contest_slug": "parichay",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 21,
+    "fields": {
+      "club_slug": "aaveg",
+      "contest_slug": "hallabol",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 22,
+    "fields": {
+      "club_slug": "aaveg",
+      "contest_slug": "ad-mockery-matchup",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 23,
+    "fields": {
+      "club_slug": "pixels",
+      "contest_slug": "shoot-your-shot",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 24,
+    "fields": {
+      "club_slug": "pixels",
+      "contest_slug": "highlight-heist",
+      "is_solo": true
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 25,
+    "fields": {
+      "club_slug": "wecan",
+      "contest_slug": "dumb-charades",
+      "is_solo": false
+    }
+  },
+  {
+    "model": "contests.contest",
+    "pk": 26,
+    "fields": {
+      "club_slug": "wecan",
+      "contest_slug": "nita-got-talent",
+      "is_solo": false
+    }
+  }
+]
