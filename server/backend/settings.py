@@ -100,18 +100,6 @@ TEMPLATES = [
 
 # Cookie settings
 if not DEBUG:
-    # Extract domain from CLIENT_DOMAIN (remove protocol and path)
-    client_url = env('CLIENT_DOMAIN')
-    # Remove http:// or https:// if present
-    if '://' in client_url:
-        client_url = client_url.split('://', 1)[1]
-    # Remove path if present
-    if '/' in client_url:
-        client_url = client_url.split('/', 1)[0]
-    # Remove port if present
-    if ':' in client_url:
-        client_url = client_url.split(':', 1)[0]
-
     # Set cookie domains
     SESSION_COOKIE_DOMAIN = '.mokshaix.in'
     CSRF_COOKIE_DOMAIN = '.mokshaix.in'
