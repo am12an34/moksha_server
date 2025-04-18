@@ -68,7 +68,7 @@ class BaseEndpoint(APIView):
                     )
                 except Exception as e:
                     # Log the error but don't fail the invitation process
-                    print(f"Error sending invitation email: {str(e)}")
+                    pass
 
         except IntegrityError:
             raise InternalServerError(

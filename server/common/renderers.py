@@ -15,9 +15,7 @@ class CryptoRenderer(JSONRenderer):
             # Get the response status code
             status_code = renderer_context.get('response').status_code if renderer_context and 'response' in renderer_context else 200
 
-            # For debugging
-            print(f"Rendering response with status code: {status_code}")
-            print(f"Response data: {data}")
+            # Process response
 
             # Render the JSON
             json_rendered = super().render(data, accepted_media_type, renderer_context)
@@ -27,11 +25,11 @@ class CryptoRenderer(JSONRenderer):
                 encrypted = encrypt(json_rendered, env('PAYLOAD_SECRET')).decode()
                 return encrypted
             except Exception as e:
-                print(f"Encryption error: {e}")
+                # Encryption failed
                 # If encryption fails, return plain JSON
                 return json_rendered
 
         except Exception as e:
-            print(f"Renderer error: {e}")
+            # Renderer error occurred
             # If anything fails, return a simple JSON error
             return json.dumps({"error": "Error rendering response"}).encode()

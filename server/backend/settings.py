@@ -17,7 +17,7 @@ import environ  # Pylance does not recognize this import for some reason but the
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
-print('eenviremonet variable :',env('DJANGO_ENV'))
+# Get environment configuration
 is_dev = env('DJANGO_ENV') == 'development'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

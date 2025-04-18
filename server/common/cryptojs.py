@@ -67,5 +67,5 @@ def decrypt(encrypted: str | bytes, passphrase: str | bytes) -> bytes:
         decrypted = aes.decrypt(encrypted[16:])
         return unpad(decrypted)
     except Exception as e:
-        print(f"Decryption error: {str(e)}")
+        # Decryption failed
         raise

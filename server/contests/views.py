@@ -70,7 +70,7 @@ class SoloContestRegistration(APIView):
             )
         except Exception as e:
             # Log the error but don't fail the registration process
-            print(f"Error sending email: {str(e)}")
+            pass
 
         serializer = SoloContestRegistrationSerializer(solo_reg)
         return Response(data=serializer.data, status=201)
@@ -166,7 +166,7 @@ class TeamContestRegistration(APIView):
                 )
         except Exception as e:
             # Log the error but don't fail the registration process
-            print(f"Error sending email: {str(e)}")
+            pass
 
         serializer = TeamContestRegistrationSerializer(
             team_reg,
