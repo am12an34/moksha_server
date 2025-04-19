@@ -40,9 +40,9 @@ if DEBUG:
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
 else:
-    ALLOWED_HOSTS = ['https://mokshaix.vercel.app/', 'mokshaix.vercel.app','mokshaix.in','https://mokshaix.in/']
-APPEND_SLASH = False
-ROOT_URLCONF = 'backend.urls'
+    ALLOWED_HOSTS = ['https://mokshaix.vercel.app/', 'mokshaix.vercel.app','mokshaix.in','https://mokshaix.in/','https://adminclient.mokshaix.in']
+    APPEND_SLASH = False
+    ROOT_URLCONF = 'backend.urls'
 
 # Application definition
 INSTALLED_APPS = [
